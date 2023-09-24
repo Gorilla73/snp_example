@@ -4,7 +4,7 @@ def rps_game_winner(l):
     #S - ножницы
 
     check_list = ["P", "R", "S"]
-    if len(l) > 2:
+    if len(l) != 2:
         raise "WrongNumberOfPlayersError"
 
     if l[0][1] not in check_list or l[1][1] not in check_list:
