@@ -19,9 +19,17 @@ class Dessert:
         return
 
     def is_healthy(self):
-        if self.__calories < 200:
-            return True
-        return False
+
+        try:
+            if type(self.__calories) != int:
+                raise TypeError
+        except TypeError:
+            print("TypeError: Ожидался тип int")
+        else:
+
+            if self.__calories < 200:
+                return True
+            return False
 
     def is_delicious(self):
         return True

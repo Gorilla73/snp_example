@@ -1,14 +1,37 @@
+class WrongNumberOfPlayersError(Exception):
+    def __init__(self):
+        self.__err = "WrongNumberOfPlayersError"
+
+    def __str__(self):
+        return self.__err
+
+
+class NoSuchStrategyError(Exception):
+
+    def __init__(self):
+        self.__err = "NoSuchStrategyError"
+
+    def __str__(self):
+        return "NoSuchStrategyError"
 def rps_game_winner(l):
     #P - бумага
     #R - камень
     #S - ножницы
 
     check_list = ["P", "R", "S"]
-    if len(l) != 2:
-        raise "WrongNumberOfPlayersError"
+    try:
+        if len(l) != 2:
+            raise WrongNumberOfPlayersError
+    except WrongNumberOfPlayersError:
+        print(WrongNumberOfPlayersError().__str__())
+        return
 
-    if l[0][1] not in check_list or l[1][1] not in check_list:
-        raise "NoSuchStrategyError"
+    try:
+        if l[0][1] not in check_list or l[1][1] not in check_list:
+            raise NoSuchStrategyError
+    except NoSuchStrategyError:
+        print(NoSuchStrategyError().__str__())
+        return
 
     if l[0][1] == l[1][1]:
         return f"player1 {l[0][1]}"
@@ -31,8 +54,8 @@ def rps_game_winner(l):
         else:
             return "player2 R"
 
-#rps_game_winner([['player1', 'P'], ['player2', 'S'], ['player3', 'S']])  #= > WrongNumberOfPlayersError
-#rps_game_winner([['player1', 'P'], ['player2', 'A']])  #= > NoSuchStrategyError
+print(rps_game_winner([['player1', 'P'], ['player2', 'S'], ['player3', 'S']]))  #= > WrongNumberOfPlayersError
+print(rps_game_winner([['player1', 'P'], ['player2', 'A']]))  #= > NoSuchStrategyError
 print(rps_game_winner([['player1', 'P'], ['player2', 'S']]))  #= > 'player2 S'
 print(rps_game_winner([['player1', 'P'], ['player2', 'P']])) #=> 'player1 P'
 print(rps_game_winner([['player1', 'S'], ['player2', 'P']]))
