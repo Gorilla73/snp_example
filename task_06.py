@@ -19,17 +19,12 @@ def rps_game_winner(l):
     #S - ножницы
 
     check_list = ["P", "R", "S"]
-    try:
-        if len(l) != 2:
-            raise WrongNumberOfPlayersError
-    except WrongNumberOfPlayersError:
-        return WrongNumberOfPlayersError()
+    if len(l) != 2:
+        raise WrongNumberOfPlayersError()
 
-    try:
-        if l[0][1] not in check_list or l[1][1] not in check_list:
-            raise NoSuchStrategyError
-    except NoSuchStrategyError:
-        return NoSuchStrategyError()
+
+    if l[0][1] not in check_list or l[1][1] not in check_list:
+        raise NoSuchStrategyError()
 
     if l[0][1] == l[1][1]:
         return f"player1 {l[0][1]}"
