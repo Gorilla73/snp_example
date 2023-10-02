@@ -23,15 +23,13 @@ def rps_game_winner(l):
         if len(l) != 2:
             raise WrongNumberOfPlayersError
     except WrongNumberOfPlayersError:
-        print(WrongNumberOfPlayersError().__str__())
-        return
+        return WrongNumberOfPlayersError().__str__()
 
     try:
         if l[0][1] not in check_list or l[1][1] not in check_list:
             raise NoSuchStrategyError
     except NoSuchStrategyError:
-        print(NoSuchStrategyError().__str__())
-        return
+        return NoSuchStrategyError().__str__()
 
     if l[0][1] == l[1][1]:
         return f"player1 {l[0][1]}"

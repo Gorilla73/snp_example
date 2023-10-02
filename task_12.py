@@ -1,33 +1,33 @@
 class Dessert:
 
     def __init__(self, name=None, calories=None):
-        self.__name = name
-        self.__calories = calories
+        self.name = name
+        self.calories = calories
 
     def get_name(self):
-        return self.__name
+        return self.name
 
     def get_calories(self):
-        return self.__calories
+        return self.calories
 
     def set_name(self, name):
-        self.__name = name
+        self.name = name
         return
 
     def set_calories(self, calories):
-        self.__calories = calories
+        self.calories = calories
         return
 
     def is_healthy(self):
 
         try:
-            if type(self.__calories) != int:
+            if (type(self.calories) != int) and (type(self.calories) != float):
                 raise TypeError
         except TypeError:
-            print("TypeError: Ожидался тип int")
+            return "TypeError: Ожидался float или int"
         else:
 
-            if self.__calories < 200:
+            if self.calories < 200:
                 return True
             return False
 
@@ -38,16 +38,16 @@ class JellyBean(Dessert):
 
     def __init__(self, name=None, calories=None, flavor=None):
         super().__init__(name, calories)
-        self.__flavor = flavor
+        self.flavor = flavor
 
     def get_flavor(self):
-        return self.__flavor
+        return self.flavor
 
     def set_flavor(self, flavor):
-        self.__flavor = flavor
+        self.flavor = flavor
 
     def is_delicious(self):
-        if self.__flavor == "black licorice":
+        if self.flavor == "black licorice":
             return False
         return True
 
